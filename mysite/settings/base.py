@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
-
+    
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    
+    'userauth',
+    'django_countries',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -69,6 +72,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(PROJECT_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'userauth/templates/userauth/'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -88,22 +92,22 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dbcar',
-        'USER': 'caruser',
-        'PASSWORD': '2020',
-        'HOST': '',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'dbcar',
+#        'USER': 'caruser',
+#        'PASSWORD': '2020',
+#        'HOST': '',
+#        'PORT': '5432',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -169,3 +173,10 @@ WAGTAIL_SITE_NAME = "mysite"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+#USERAUTH
+AUTH_USER_MODEL = 'userauth.CustomUser'
+
+WAGTAIL_USER_CREATION_FORM = 'userauth.forms.WagtailUserCreationForm'
+WAGTAIL_USER_EDIT_FORM = 'userauth.forms.WagtailUserEditForm'
+WAGTAIL_USER_CUSTOM_FIELDS = ['display_name', 'date_of_birth', 'address1', 'address2', 'zip_code', 'city', 'country', 'mobile_phone', 'additional_information', 'photo',]
