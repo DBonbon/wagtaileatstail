@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
-    'widget-tweaks',
+    'widget_tweaks',
     
     'userauth',
     'django_countries',
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -197,3 +198,4 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
