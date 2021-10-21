@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
     'wagtailtrans.middleware.TranslationMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,6 +85,8 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(PROJECT_DIR, 'templates'),
             os.path.join(BASE_DIR, 'userauth/templates/userauth/'),
+            os.path.join(BASE_DIR, 'cms/templates/cms/'),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -146,7 +149,6 @@ USE_TZ = True
 LANGUAGES = [
     ('en', "English"),
     ('fr', "Français"),
-    ('nl', "Nederlands"),
 ]
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)

@@ -37,7 +37,7 @@ class HomePage(TranslatablePage):
             FieldPanel('article_section_intro', classname='full'),
             PageChooserPanel('article_section'),
             ], heading=_("Article section"), classname='collapsible'),
-        ]
+    ]
     
 
 
@@ -50,14 +50,14 @@ class ArticlePage(TranslatablePage):
     body = StreamField([
         ('paragraph', blocks.RichTextBlock()),
         ('image', InlineImageBlock()),
-   ])
+    ])
 
     content_panels = TranslatablePage.content_panels + [
         FieldPanel('intro'),
         FieldPanel('featured'),
         ImageChooserPanel('image'),
         StreamFieldPanel('body'),
-   ]
+    ]
    
 
 class ArticleIndexPage(TranslatablePage):
