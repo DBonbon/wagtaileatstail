@@ -1,2 +1,75 @@
-{%  include "streamfield.html" %}
-<a href="{{ page.get_parent.url }}">{% trans "Return to articles" %}</a>
+{% extends "base.html" %}
+
+{% load i18n wagtailcore_tags wagtailimages_tags widget_tweaks static %}
+
+{% block body_class %}template-articlepage{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function(){
+
+            $("#id_login_first_link").click(function(event) {
+                event.preventDefault();
+                $("#id_login_form").show();
+            });
+
+            $("#id_submit_login_form").click(function(event){
+                event.preventDefault();
+
+                $.ajax({
+                    type:"POST",
+                    url: "{% url 'account_login' %}",
+                    data: $('#id_login_form').serialize(),
+                    success: function(response, status){
+                        $("#id_login_form").hide();
+                        $("#id_login_first_link").hide();
+                        location.reload();
+                    },
+                    error: function(xhr, status, error){
+                        $('#id_login_form').submit();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mt-4">
+        <div class="page-title">
+            <h1>{{ page.title }}</h1>
+        </div>
+        <div class="page-intro">
+            {{ page.intro|richtext }}
+        </div>
+        <div class="page-intro small">
+            {{ page.first_published_at }}
+        </div>
+    </div>
+
+    
+
+     {% if page.body %}
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-auto mb-3">
+                    {%  include "streamfield.html" %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-auto">
+                <a href="{{ page.get_parent.url }}">{% trans "Return to articles" %}</a>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+{% endblock %}
