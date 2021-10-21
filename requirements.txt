@@ -21,4 +21,6 @@ gunicorn
 wagtail_blocks
 dj_database_url
 django-environ
+
+django-allauth
 django-countries
