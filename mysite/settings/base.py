@@ -48,6 +48,11 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.settings',
+    'wagtailtrans',
+    'cms',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,6 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'wagtailtrans.middleware.TranslationMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -103,16 +109,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'dbcar',
-#        'USER': 'caruser',
-#        'PASSWORD': '2020',
-#        'HOST': '',
-#        'PORT': '5432',
-#    }
-#}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -145,6 +142,16 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LANGUAGES = [
+    ('en', "English"),
+    ('fr', "Français"),
+    ('nl', "Nederlands"),
+]
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+
+WAGTAILTRANS_HIDE_TRANSLATION_TREES = True
 
 
 # Static files (CSS, JavaScript, Images)

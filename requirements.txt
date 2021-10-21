@@ -24,3 +24,4 @@ django-environ
 
 django-allauth
 django-countries
+wagtailtrans
