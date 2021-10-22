@@ -41,19 +41,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
-    'widget_tweaks',
     
-    'userauth',
-    'django_countries',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    
-    'wagtail.contrib.modeladmin',
-    'wagtail.contrib.settings',
-    'wagtailtrans',
-    'cms',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,11 +49,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    
+    'userauth',
+    'django_countries',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'widget_tweaks',
+
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.settings',
+    'wagtailtrans',
+    'cms',
 ]
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'wagtail.core.middleware.SiteMiddleware',
+    #'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.legacy.sitemiddleware.SiteMiddleware',
     'wagtailtrans.middleware.TranslationMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

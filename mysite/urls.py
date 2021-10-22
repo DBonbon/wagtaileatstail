@@ -2,6 +2,7 @@ from django.conf import settings
 from django.urls import include, path
 from django.contrib import admin
 
+from django.conf.urls.i18n import i18n_patterns
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
@@ -19,6 +20,10 @@ urlpatterns = [
 
 ]
 
+urlpatterns += i18n_patterns(
+    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('userauth.urls')),
+)
 
 if settings.DEBUG:
     from django.conf.urls.static import static
