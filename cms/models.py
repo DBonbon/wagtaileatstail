@@ -5,7 +5,7 @@ from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtailtrans.models import TranslatablePage
-from .blocks import InlineImageBlock
+from .blocks import InlineImageBlock, InlineVideoBlock
 
 
 
@@ -50,6 +50,7 @@ class ArticlePage(TranslatablePage):
     body = StreamField([
         ('paragraph', blocks.RichTextBlock()),
         ('image', InlineImageBlock()),
+        ('video', InlineVideoBlock()),
     ])
 
     content_panels = TranslatablePage.content_panels + [
