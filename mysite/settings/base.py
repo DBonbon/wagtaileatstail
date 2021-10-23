@@ -216,5 +216,10 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'userauth.forms.SignupForm'
 
+
+from django.urls import reverse_lazy
+
+LOGIN_URL = reverse_lazy('account_login')
+LOGIN_REDIRECT_URL = reverse_lazy('account_profile')
 # Wagtail setting for embedded video https://docs.wagtail.io/en/v2.9/topics/writing_templates.html#responsive-embeds
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
